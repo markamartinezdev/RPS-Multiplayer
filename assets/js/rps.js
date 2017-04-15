@@ -95,22 +95,22 @@
       //compair if playerOne chose rock
       if (player === 'rock' && opponent === 'scissor') {
           wins++;
-          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player1/choice').set('none');
+          database.ref('/player2/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
       }
       if (player === 'scissor' && opponent === 'paper') {
           wins++;
-          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player1/choice').set('none');
+          database.ref('/player2/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
       }
       if (player === 'paper' && opponent === 'rock') {
           wins++
-          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player1/choice').set('none');
+          database.ref('/player2/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
-      }else{
-          database.ref('/player' + playerNumber + '/choice').set('none');
       }
-
       $('#instructions').html('<h1>Make a choice</h1>');
       madeChoice = false;
       //print score
