@@ -107,9 +107,10 @@
           wins++
           database.ref('/player' + playerNumber + '/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
+      }else{
+          database.ref('/player' + playerNumber + '/choice').set('none');
       }
-      database.ref('/player' + playerNumber + '/choice').set('none');
-      database.ref('/player' + playerNumber + '/wins').set(wins);
+
       $('#instructions').html('<h1>Make a choice</h1>');
       madeChoice = false;
       //print score
