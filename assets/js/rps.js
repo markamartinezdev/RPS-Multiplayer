@@ -61,7 +61,7 @@
       console.log(playerChoice);
       if (madeChoice == false) {
           madeChoice = true;
-          $('#instructions').html('<h1>player' + playerNumber + ' chose ' + playerChoice + '</h1>');
+          $('#instructions').html('<h1>You chose ' + playerChoice + '</h1>');
           database.ref('/player' + playerNumber + '/choice').set(playerChoice);
       }
   });
@@ -110,6 +110,11 @@
           database.ref('/player1/choice').set('none');
           database.ref('/player2/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if ((player === opponent) || (player === 'rock' && opponent === 'paper') || (player === 'scissor' && opponent === 'rock') || (player === 'paper' && opponent === 'scissor')) {
+
+          database.ref('/player1/choice').set('none');
+          database.ref('/player2/choice').set('none');
       }
       $('#instructions').html('<h1>Make a choice</h1>');
       madeChoice = false;
