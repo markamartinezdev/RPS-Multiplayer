@@ -57,11 +57,11 @@
   //player chooses attack option
   $('.option').on('click', function() {
       //set selected as players choice
-      playerChoice = $(this).text().trim();
-
+      playerChoice = $(this).find('img').attr('alt');
+      console.log(playerChoice);
       if (madeChoice == false) {
           madeChoice = true;
-          $('#sectionOne').html('<h1>player' + playerNumber + ' chose ' + playerChoice + '</h1>');
+          $('#instructions').html('<h1>player' + playerNumber + ' chose ' + playerChoice + '</h1>');
           database.ref('/player' + playerNumber + '/choice').set(playerChoice);
       }
   });
@@ -109,7 +109,7 @@
           database.ref('/player' + playerNumber + '/wins').set(wins);
       }
 
-      $('#sectionOne').html('<h1>Make a choice</h1>');
+      $('#instructions').html('<h1>Make a choice</h1>');
       madeChoice = false;
       //print score
       database.ref().on('value', function(snapshot) {
