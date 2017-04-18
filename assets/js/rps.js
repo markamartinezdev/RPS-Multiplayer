@@ -61,7 +61,7 @@
       console.log(playerChoice);
       if (madeChoice == false) {
           madeChoice = true;
-          $('#instructions').html('<h1>You chose ' + playerChoice + '</h1>');
+          $('#instructions').html('<h1>player' + playerNumber + ' chose ' + playerChoice + '</h1>');
           database.ref('/player' + playerNumber + '/choice').set(playerChoice);
       }
   });
@@ -95,19 +95,44 @@
       //compair if playerOne chose rock
       if (player === 'rock' && opponent === 'scissor') {
           wins++;
-
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
       }
       if (player === 'scissor' && opponent === 'paper') {
           wins++;
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
       }
       if (player === 'paper' && opponent === 'rock') {
           wins++
-      }
-      if (playe !== 'none') {
-          database.ref('/player1/choice').set('none');
-          database.ref('/player2/choice').set('none');
+          database.ref('/player' + playerNumber + '/choice').set('none');
           database.ref('/player' + playerNumber + '/wins').set(wins);
       }
+      if (player === 'scissor' && opponent === 'rock') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if (player === 'paper' && opponent === 'scissor') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if (player === 'rock' && opponent === 'paper') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if (player === 'rock' && opponent === 'rock') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if (player === 'paper' && opponent === 'paper') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+      if (player === 'scissor' && opponent === 'scissor') {
+          database.ref('/player' + playerNumber + '/choice').set('none');
+          database.ref('/player' + playerNumber + '/wins').set(wins);
+      }
+
       $('#instructions').html('<h1>Make a choice</h1>');
       madeChoice = false;
       //print score
